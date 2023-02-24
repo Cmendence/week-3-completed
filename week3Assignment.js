@@ -208,30 +208,41 @@ the function will return "No bet! Improper amount" which is true to live casinos
 
 
 function placeSixOrEight(bet){
+    // if bet is greater than 6 and in increments of 6
     if (bet >=6 && bet % 6 === 0){
+        //return the bet and payout string
         return `That's a bet! ${bet} pays ${(bet / 6) * 7}`;
     } else {
+        // if the bet does not meed the conditions
         return 'No bet! Improper amount!'
     }
 }
 
-console.log(placeSixOrEight());
+console.log(placeSixOrEight(210));
 
 
 const placeNums = [4,5,6,8,9,10];
 function placeBet(bet, num){
     let payout = 0
+    //if bet is at least 6, is in increments of 6 and the numb is 6 or 8
     if (bet >=6 && bet % 6 === 0 && (num === 6 || num === 8)) {
+        //every $6 pays $7
         payout = (bet / 6) * 7;
         return `That's a bet! ${bet} on the ${num} pays ${payout}`;
+    //if bet is at least 5, is in increments of 5, and num is 5 or 9
     } else if (bet >=5 && bet % 5 === 0 && (num === 5 || num === 9)) {
+        //every $5 pays $7
         payout = (bet / 5) * 7;
         return `That's a bet! ${bet} on the ${num} pays ${payout}`;
+    //if bet is at least 5, is in increments of 5, and num is 4 or 10
     } else if (bet >=5 && bet % 5 === 0 && (num === 4 || num === 10)) {
+        // every $5 pays $9
         payout = (bet / 5) * 9
         return `That's a bet! ${bet} on the ${num} pays ${payout}`;
+    // if the number chosen is not a place bet number
     } else if(!placeNums.includes(num)){
         return 'Invalid Number'
+    //if the bet does not meet the conditions above
     } else {
         return 'No bet! Not a proper amount!';
     } 
